@@ -10,6 +10,8 @@ import {
   Col,
 } from "react-bootstrap";
 import { FaPlusCircle } from "react-icons/fa";
+import AddTodo from "./components/AddTodo";
+import ListTodo from "./components/ListTodo";
 
 function App() {
   const [todoName, setTodoName] = useState("");
@@ -39,48 +41,16 @@ function App() {
       <h1 className="text-center mt-5">Todo Web App</h1>
 
       {/* input todo */}
-      <Card className="mt-5">
-        <Card.Body>
-          <Stack direction="horizontal" gap={3}>
-            <Form.Control
-              type="text"
-              placeholder="Masukan todo..."
-              onChange={handleChangeName}
-              value={todoName}
-            />
-            <Button onClick={addTodo}>
-              <FaPlusCircle />
-            </Button>
-          </Stack>
-        </Card.Body>
-      </Card>
+      {/* mengirim function ke komponen dgn props */}
+      <AddTodo
+        handleChangeName={handleChangeName}
+        todoName={todoName}
+        addTodo={addTodo}
+      />
 
       {/* List todo */}
       <div className="mt-5">
-        {todolist.map((value, index) => {
-          return (
-            <Card className="mt-3">
-              <Card.Body>
-                <Row>
-                  <Col>
-                    <h3>{value.todoName}</h3>
-                  </Col>
-
-                  <Col xl="1">
-                    <Button>Selesai</Button>
-                  </Col>
-                </Row>
-                <Button
-                  variant="danger"
-                  className="mt-2"
-                  onClick={() => deleteTodo(index)}
-                >
-                  Hapus
-                </Button>
-              </Card.Body>
-            </Card>
-          );
-        })}
+        <ListTodo todolist={todolist} deleteTodo={deleteTodo} />
       </div>
     </Container>
   );
