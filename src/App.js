@@ -1,15 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import {
-  Container,
-  Form,
-  Button,
-  Stack,
-  Card,
-  Row,
-  Col,
-} from "react-bootstrap";
-import { FaPlusCircle } from "react-icons/fa";
+import { Container } from "react-bootstrap";
 import AddTodo from "./components/AddTodo";
 import ListTodo from "./components/ListTodo";
 
