@@ -21,6 +21,13 @@ function App() {
     setTodolist(todolist.filter((value, idx) => index !== idx));
   };
 
+  //4. finish todo
+  const finishTodo = (index) => {
+    const cloneTodolist = [...todolist];
+    cloneTodolist[index].status = !cloneTodolist[index].status;
+    setTodolist(cloneTodolist);
+  };
+
   //1. tangkap dlu text inputnya
   const handleChangeName = (e) => {
     const data = e.target.value;
@@ -40,8 +47,13 @@ function App() {
       />
 
       {/* List todo */}
+      {/* mengirim function ke komponen dgn props */}
       <div className="mt-5">
-        <ListTodo todolist={todolist} deleteTodo={deleteTodo} />
+        <ListTodo
+          todolist={todolist}
+          deleteTodo={deleteTodo}
+          finishTodo={finishTodo}
+        />
       </div>
     </Container>
   );
